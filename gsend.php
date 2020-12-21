@@ -1,20 +1,20 @@
 <?php
-	if (isset($_POST['submit'])) {
-		$name=$_POST['name'];
-		$email=$_POST['email'];
-		$subject=$_POST['subject'];
-		$msg=$_POST['msg'];
+// variable setting
+$name = $_REQUEST['name'];
+$email = $_REQUEST['email'];
+$subject = $_REQUEST['subjest'];
+$message = $_REQUEST['message'];
 
-		$to='nssidd0@gmail.com';
-		$subject='Form Submission';
-		$message="Name: ".$name."\n"."Subject: ".$subject."\n". "Wrote the following: "."\n\n".$msg;
-		$headers="Form: ".$email;
-
-		if(mail($to, $subject, $message, $header)){
-			echo "<h1>Sent Successfully! Thank you"." ".$name.", We will contact you shortly!</h1>";
-		}
-		else{
-			echo "Something went wrong!";
-		}
-	}
+//check input fields
+if (empty($name) || empty($email) || empty($subject) || empty($message))
+{
+	echo "Please fill all the fields";
+}
+else
+{
+	mail("nssidd0@gmail.com", "Web MSG", $message , "From: $name <$email>");
+	echo "<script type='text/javascript'>alert('your message sent successfully');
+	window.history.log(-1);
+	</script>";
+}
 ?>
