@@ -1,3 +1,26 @@
+<?php
+// variable setting
+$name = $_REQUEST['name'];
+$email = $_REQUEST['email'];
+$subject = $_REQUEST['subjest'];
+$message = $_REQUEST['message'];
+
+//check input fields
+if (empty($name) || empty($email) || empty($subject) || empty($message))
+{
+	echo ('Please fill all the fields');
+}
+else
+{
+	mail("nssidd0@gmail.com", "Email form", $message , "From: $name <$email>");
+	echo "<script type='text/javascript'>alert('Message Sent Successfully!...');
+	window.history.go(-1);
+	</script>";
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -517,7 +540,7 @@
 
 			<!-- Contact Form -->
 			<div class="row">
-				<form action="gsend.php" class="contact-form padd-15">
+				<form class="contact-form padd-15">
 					<div class="row">
 						<div class="form-item col-6 padd-15">
 							<div class="form-group">
