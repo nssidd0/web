@@ -1,9 +1,9 @@
 <?php
 // variable setting
-$name = $_REQUEST['name'];
-$email = $_REQUEST['email'];
-$subject = $_REQUEST['subjest'];
-$message = $_REQUEST['message'];
+$name = $_REQUEST['Name'];
+$email = $_REQUEST['Email'];
+$subject = $_REQUEST['Uubjest'];
+$message = $_REQUEST['Message'];
 
 //check input fields
 if (empty($name) || empty($email) || empty($subject) || empty($message))
