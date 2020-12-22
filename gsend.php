@@ -1,20 +1,28 @@
-<?php
-// variable setting
-$name = $_REQUEST['name'];
-$email = $_REQUEST['email'];
-$subject = $_REQUEST['subjest'];
-$message = $_REQUEST['message'];
+<?php 
 
-//check input fields
-if (empty($name) || empty($email) || empty($subject) || empty($message))
-{
-	echo ('Please fill all the fields');
-}
-else
-{
-	mail("nssidd0@gmail.com", "Email form", $message , "From: $name <$email>");
-	echo "<script type='text/javascript'>alert('Message Sent Successfully!...');
-	window.history.go(-1);
-	</script>";
-}
+    if(isset($_POST['btn-send']))
+    {
+       $Name = $_POST['Name'];
+       $Email = $_POST['Email'];
+       $Subject = $_POST['Subject'];
+       $Msg = $_POST['msg'];
+
+       if(empty($Name) || empty($Email) || empty($Subject) || empty($Msg))
+       {
+           header('location:index.php?error');
+       }
+       else
+       {
+           $to = "nssidd0@gmail.com";
+
+           if(mail($to,$Subject,$Msg,$Email))
+           {
+               header("location:index.php?success");
+           }
+       }
+    }
+    else
+    {
+        header("location:index.php");
+    }
 ?>
