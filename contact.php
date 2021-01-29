@@ -1,20 +1,30 @@
-<?php
-	if(isset($_POST['submit'])){
-		$name=$_POST['name'];
-		$email=$_POST['email'];
-		$subject=$_POST['subject'];
-		$msg=$_POST['msg'];
+<?php 
 
-		$to='nssidd0gmail.com'; // Receiver Email ID, Replace with your email ID
-		$subject='Form Submission';
-		$message="Name :".$name."\n"."Subject :".$subject."\n"."Wrote the following :"."\n\n".$msg;
-		$headers="From: ".$email;
+		$name = $_POST['name'];
+		$visitor_email = $_POST['email'];
+		$subject = $_POST['subject'];
+		$message = $_POST['message'];
 
-		if(mail($to, $subject, $message, $headers)){
-			echo "<h1>Sent Successfully! Thank you"." ".$name.", We will contact you shortly!</h1>";
-		}
-		else{
-			echo "Something went wrong!";
-		}
-	}
-?>
+		$email_from = 'k.developer.x@gmail.com';
+
+		$email_subject = 'New Form Query!';
+
+		$email_body = "Visitor Name : $name.\n".
+						"Visitor Email : $visitor_email.\n".
+							"Visitor Message : $message.\n";
+
+
+	 $to ="nssidd0@gmail.com";
+
+	 $headers = "Form : $email_from \r\n";
+	 $headers .= "Reply-To : $visitor_email \r\n";
+
+	$run = mail($to,$email_subject,$subject,$email_body,$headers);
+
+    if($run)
+	 	echo "<script>alert('Form Submitted!');location.href='index.html';</script>";
+	 
+
+
+
+ ?>
